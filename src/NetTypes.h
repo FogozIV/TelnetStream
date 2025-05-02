@@ -18,7 +18,6 @@ repository https://github.com/jandrassy
 
 #ifndef _NETTYPES_H_
 #define _NETTYPES_H_
-
 #include <Arduino.h> // to include MCU specific includes for networking library
 
 // esp doesn't support __has_include but it is defined
@@ -63,6 +62,11 @@ repository https://github.com/jandrassy
 #include <ArduinoWiFiServer.h>
 #define NetServer ArduinoWiFiServer
 #endif
+
+#elif TEENSY41
+#include <QNEthernet.h>
+#define NetClient qindesign::network::EthernetClient
+#define NetServer qindesign::network::EthernetServer
 
 #elif __has_include(<Ethernet.h>)
 #include <Ethernet.h>
